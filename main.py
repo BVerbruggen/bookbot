@@ -3,8 +3,12 @@ import sys
 
 
 def get_book_text(filepath):
-    with open(filepath, encoding='utf-8-sig') as f:
-        return f.read()
+    try:
+        with open(filepath, encoding='utf-8-sig') as f:
+            return f.read()
+    except FileNotFoundError:
+        print("Error: Book file does not exist. Enter a valid book file path.")
+        exit(1)
 
 
 def main(book_path):
